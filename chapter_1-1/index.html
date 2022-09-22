@@ -8,35 +8,19 @@
     <body>
         <h1>Vue3</h1>
         <div id="app">
-            {{message + "[" + new Date().toLocaleString() + "]"}}
-            <hr>
-            <button onclick="doAction()">Stop</button>
+            <div>{{num + 'は' + (num % 2 == 0 ? '偶数' : '奇数') +'です。'}}</div>
         </div>
 
         <script>
-            let timer = null
-
-            function doAction() {
-                clearInterval(timer)
-            }
             const appdata = {
-                data() {
+                data()  {
                     return {
-                        message: '',
+                        num: Math.floor(Math.random() * 100)
                     }
-                },
-                created() {
-                    this.message = "Hello Vue!",
-                    this.count = 0
-                },
-                mounted() {
-                    timer = setInterval(() => {
-                       this.count++
-                       this.message = 'Count: ' + this.count 
-                    }, 1000);
                 }
             }
-            Vue.createApp(appdata).mount('#app')
+            let app = Vue.createApp(appdata)
+            app.mount('#app')
         </script>
     </body>
 
