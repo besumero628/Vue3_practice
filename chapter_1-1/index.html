@@ -10,18 +10,20 @@
     </head>
     
     <body>
-        <h1>Vue3</h1>
-        <div id="app">
-            <pre>{{data.map((value, key) => key + ' :「' + value + '」').join('\n')}}</pre>
+        <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
+        <div id="app" class="container">
+            <p>{{message}}</p>
         </div>
 
         <script>
-            const data = ['Windouws', 'macOS', 'Linux', 'iOS', 'Android']
             const appdata = {
                 data()  {
                     return {
-                        data: data
+                        message : null
                     }
+                },
+                mounted() {
+                    this.message = 'This is sample page'
                 }
             }
             let app = Vue.createApp(appdata)
