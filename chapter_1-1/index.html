@@ -26,7 +26,7 @@
         </style>
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
-            <p v-bind:class="classes">
+            <p v-bind:style="{fontSize: '20pt', color:'red', border:'2px solid cyan'}">
                 {{message}}
             </p>
         </div>
@@ -45,8 +45,8 @@
                 },
                 mounted() {
                     setInterval(() => {
-                        this.classes.red = !classObj.isBlue
-                        this.classes.blue = !classObj.isRed
+                        this.classes.red = !classObj.red
+                        this.classes.blue = !classObj.blue
                     }, 1000);
                 },
             }
