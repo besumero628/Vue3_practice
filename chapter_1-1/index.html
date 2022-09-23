@@ -13,7 +13,9 @@
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
             <p>{{message}}</p>
-            <hello/>
+            <div><hello/></div>
+            <div><hello/></div>
+            <div><hello/></div>
         </div>
 
         <script>
@@ -23,39 +25,19 @@
                         message: '※コンポーネントを表示する',
                         name: 'no-name'
                     }
+                },
+                components: {
+                    hello: {
+                        data() {
+                            return {
+                                counter: 0
+                            }
+                        },
+                        template: `<p v-on:click="counter++" class="alert alert-info h5">clicked: {{counter}}.</p>`
+                    }
                 }
             }
             let app = Vue.createApp(appdata)
-
-            app.component('hello', {
-                data() {
-                    return {
-                        num: 0,
-                        message: 'type a number'
-                    }
-                },
-                computed: {
-                    calc: function (event) {
-                        var total = 0
-                        for (var i = 1; i <= this.num; i++){
-                            total +=i
-                        }
-                        return "total: " + total
-
-                    }
-                },
-                methods: {
-                    calc() {
-                        
-                    }
-                },
-                template: `<div>
-                    <p class="alert alert-info h4">{{calc}}</p>
-                    <div>
-                        <input class="form-control" type="number" v-model="num">
-                    </div>
-                </div>`
-            })
             app.mount('#app')
         </script>
     </body>
