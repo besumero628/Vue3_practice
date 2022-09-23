@@ -26,7 +26,7 @@
         </style>
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
-            <p v-bind:style="{fontSize: '20pt', color:'red', border:'2px solid cyan'}">
+            <p v-bind:style="styles">
                 {{message}}
             </p>
         </div>
@@ -40,7 +40,14 @@
                 data()  {
                     return {
                         message : 'This is sample page',
-                        classes: classObj
+                        styles: {
+                            margin: '10px',
+                            padding: '5px 20px',
+                            fontSize: '20px',
+                            color: 'red',
+                            backgroundColor: '#fee',
+                            border: '3px solid blue'
+                        }
                     }
                 },
                 mounted() {
