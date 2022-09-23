@@ -12,41 +12,36 @@
     <body>
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
-            <template v-if="flag">
-                <p>※データをテーブル表示する</p>
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr><th>Name</th><th>mail</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Taro</td><td>taro@yamada</td></tr>
-                        <tr><td>Hanako</td><td>hanako@flower</td></tr>
-                        <tr><td>Sachiko</td><td>sachiko@happy</td></tr>
-                    </tbody>
-                </table>
-            </template>
-            <template v-else>
-                <p>※データをリスト表示する</p>
-                <ul class="list-group">
-                    <li class="list-group-item">Taroのアドレスは、taro@yamadaです。</li>
-                    <li class="list-group-item">Hanakoのアドレスは、hanako@flowerです。</li>
-                    <li class="list-group-item">Sachikoのアドレスは、sachiko@happyです。</li>
-                </ul>
-            </template>
+            <p>{{message}}</p>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>mail</th>
+                        <th>tel</th>
+                    </tr>
+                    <tr v-for="item in items">
+                        <td>{{item.name}}</td>
+                        <td>{{item.mail}}</td>
+                        <td>{{item.tel}}</td>
+                    </tr>
+                </thead>
+            </table>
         </div>
 
         <script>
             const appdata = {
                 data()  {
                     return {
-                        flag: true
+                        message: '※データをテーブル表示する',
+                        items:[
+                            {name: 'Taro', mail:'taro@yamada', tel: '999-999'},
+                            {name: 'Hanako', mail:'hanako@flower', tel: '888-888'},
+                            {name: 'Sachiko', mail:'sachiko@happy', tel: '777-777'},
+                            {name: 'Jiro', mail:'jiro@change', tel: '666-666'}
+                        ]
                     }
-                },
-                mounted() {
-                    setInterval(() => {
-                        this.flag = !this.flag
-                    }, 1000);
-                },
+                }
             }
             let app = Vue.createApp(appdata)
             app.mount('#app')
