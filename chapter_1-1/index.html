@@ -11,49 +11,34 @@
     
     <body>
         <style>
-            .red {
-                font-size: 32pt;
-                font-weight: plain;
-                font-style: normal;
-                color: red;
-            }
-            .blue {
+            .ok {
                 font-size: 24pt;
-                font-weight: bold;
-                font-style: italic;
                 color: blue;
+                padding: 5px 10px;
+                border: 2px solid red;
+            }
+            .ng {
+                font-size: 20pt;
+                color: gray;
             }
         </style>
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
-            <p v-bind:style="styles">
-                {{message}}
-            </p>
+            <p v-if="flag" class="ok">{{message}}</p>
+            <p v-else class="ng">※現在、問題が発生中です......</p>
         </div>
 
         <script>
-            var classObj = {
-                red: true,
-                blue: false
-            }
             const appdata = {
                 data()  {
                     return {
                         message : 'This is sample page',
-                        styles: {
-                            margin: '10px',
-                            padding: '5px 20px',
-                            fontSize: '20px',
-                            color: 'red',
-                            backgroundColor: '#fee',
-                            border: '3px solid blue'
-                        }
+                        flag: true
                     }
                 },
                 mounted() {
                     setInterval(() => {
-                        this.classes.red = !classObj.red
-                        this.classes.blue = !classObj.blue
+                        this.flag = !this.flag
                     }, 1000);
                 },
             }
