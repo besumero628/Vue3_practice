@@ -13,7 +13,10 @@
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
             <p>{{message}}</p>
-            <hello v-for="item in data" v-bind:name="item" />
+            <div><hello v-bind:name="name" /></div>
+            <div class="form-group">
+                <input type="text" v-model="name" class="form-control">
+            </div>
         </div>
 
         <script>
@@ -21,20 +24,15 @@
                 data()  {
                     return {
                         message: '※コンポーネントを表示する',
-                        data:['Taro', 'Hanako', 'Sachiko', 'Jiro']
+                        name: 'no-name'
                     }
                 }
             }
             let app = Vue.createApp(appdata)
 
             app.component('hello', {
-                props:{name: String},
-                data(){
-                    return {
-                        message: 'これは新しいメッセージです。'
-                    }
-                },
-                template: '<p class="alert alert-primary">Hello! {{name}}!</p>'
+                props:['name'],
+                template: '<p class="alert alert-info">Hello! {{name}}!</p>'
             })
             app.mount('#app')
         </script>
