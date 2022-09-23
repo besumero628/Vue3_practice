@@ -13,10 +13,7 @@
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
             <p>{{message}}</p>
-            <div><hello v-bind:name="name" /></div>
-            <div class="form-group">
-                <input type="text" v-model="name" class="form-control">
-            </div>
+            <hello/>
         </div>
 
         <script>
@@ -31,8 +28,12 @@
             let app = Vue.createApp(appdata)
 
             app.component('hello', {
-                props:['name'],
-                template: '<p class="alert alert-info">Hello! {{name}}!</p>'
+                data() {
+                    return {
+                        counter: 0
+                    }
+                },
+                template: '<p v-on:click="counter++" class="alert alert-info">clicked: {{counter}}</p>'
             })
             app.mount('#app')
         </script>
