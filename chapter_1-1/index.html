@@ -13,7 +13,8 @@
         <h1 class="bg-secondary text-white display-4 px-3">Vue3</h1>
         <div id="app" class="container">
             <p>{{message}}</p>
-            <hello />
+            <div><hello name="Taro" /></div>
+            <div><hello name="Hanako" /></div>
         </div>
 
         <script>
@@ -27,12 +28,13 @@
             let app = Vue.createApp(appdata)
 
             app.component('hello', {
+                props:['name'],
                 data(){
                     return {
                         message: 'これは新しいメッセージです。'
                     }
                 },
-                template: '<p class="alert alert-primary">{{message}}</p>'
+                template: '<p class="alert alert-primary">{{name}}</p>'
             })
             app.mount('#app')
         </script>
