@@ -15,7 +15,6 @@ export default {
   name: 'HelloWorld',
   props: {
     title: String,
-    message: String,
   },
   data() {
     return {
@@ -26,6 +25,7 @@ export default {
   methods: {
     doAction() {
       this.message="こんにちは、" + this.input + 'さん！'
+      this.$emit('result-event', this.input)
     }
   }
 }
