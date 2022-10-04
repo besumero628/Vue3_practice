@@ -1,10 +1,8 @@
 export default {
   name: 'HelloJSX',
-  data() {
-    return {
-      title: 'HelloJSX',
-      message: 'This is sample message.',
-    }
+  props: {
+    title: String,
+    message: String,
   },
   render(h) {
     return (
