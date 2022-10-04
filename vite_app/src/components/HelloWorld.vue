@@ -1,4 +1,5 @@
 <script>
+import { h } from 'vue';
 export default {
   name: 'HelloWorld',
   data() {
@@ -8,8 +9,14 @@ export default {
     }
   },
   render() {
-    return `<h1>{{ title }}</h1>
-      <p>{{ message }}</p>`
+    return h('div', {
+      class: 'alert alert-warning'
+    },
+    [
+      h('h2', this.title),
+      h('p', this.message)
+    ]
+    )
   }
 }
 </script>
