@@ -1,10 +1,3 @@
-<template>
-  <div class="alert alert-info">
-    <h2>{{ title }}</h2>
-    <p>{{ message }}</p>
-  </div>
-</template>
-
 <script>
 export default {
   name: 'HelloWorld',
@@ -13,6 +6,10 @@ export default {
       title: 'HelloWorld',
       message: 'This is sample message.',
     }
+  },
+  render() {
+    return `<h1>{{ title }}</h1>
+      <p>{{ message }}</p>`
   }
 }
 </script>
