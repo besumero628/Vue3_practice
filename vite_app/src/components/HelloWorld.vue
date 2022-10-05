@@ -4,7 +4,12 @@
     <pre v-on:click="clear">{{message}}</pre>
     <hr>
     <div>
-      <input type="text" v-on:keydown="type" class="form-control">
+      <input type="text" class="form-control"
+      v-on:keypress="type"
+      v-on:keydown.delete="clear"
+      v-on:keydown.space="space" 
+      v-on:keydown.enter="enter" 
+      >
     </div>
 </template>
 
@@ -13,21 +18,29 @@ export default {
   name: "HelloWorld",
   data: function () {
     return {
-      title: 'Event',
-      message: ''
-    }
+      title: "Event",
+      message: "",
+    };
   },
   methods: {
     type(event) {
-      this.message += event.key + ' '
-      if (event.key == "Escape") {
-        this.message = ''
+      if (event.key == "Enter") {
+        return;
       }
+      this.message += event.key + ' '
       event.target.value = ''
     },
     clear() {
-      this.message = ''
+      this.message = "";
+    },
+    space() {
+      this.message += '_ '
+    },
+    enter(event) {
+      var res = this.message.split(' ').join('')
+      this.message = res.split('_').join(' ')
+      event.target.value = ''
     }
-  }
-}
+  },
+};
 </script>
