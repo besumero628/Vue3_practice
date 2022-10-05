@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    <HelloJSX title="OK Vue3" message="※属性で設定したメッセージ" />
+    <HelloWorld v-bind:title="message" v-bind:num="num" />
   </div>
 </template>
 
 <script>
-import HelloJSX from './components/hello.jsx';
+import HelloWorld from './components/HelloWorld.vue';
 export default {
   name: 'app',
   components: {
-    HelloJSX
+    HelloWorld
+  },
+  data() {
+    return {
+      message: 'validate',
+      num: 123
+    }
   }
 }
 </script>
