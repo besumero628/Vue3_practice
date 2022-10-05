@@ -3,12 +3,9 @@
     <h1>{{ title }}</h1>
     <pre v-on:click="clear">{{message}}</pre>
     <hr>
-    <div class="area"
-    v-on:click.left.prevent = "left"
-    v-on:click.middle.prevent = "middle"
-    v-on:click.right.prevent = "right"
-    >
-    click here!
+    <div class="alert alert-light">
+      <h3>Inner Slot</h3>
+      <slot />
     </div>
 </template>
 
@@ -17,20 +14,9 @@ export default {
   name: "HelloWorld",
   data: function () {
     return {
-      title: "Event",
-      message: "",
+      title: "Slot",
+      message: "This is message",
     };
-  },
-  methods: {
-    left() {
-      this.message = '[left button]'
-    },
-    right() {
-      this.message = '[right button]'
-    },
-    middle() {
-      this.message = '[middle button]'
-    }
   },
 };
 </script>
