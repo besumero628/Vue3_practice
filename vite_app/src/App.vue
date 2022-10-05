@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <HelloWorld v-bind:title="message" v-bind:num="num" />
+    <HelloWorld title="computed" />
   </div>
 </template>
 
