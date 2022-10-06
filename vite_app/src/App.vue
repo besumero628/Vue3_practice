@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <HelloJSX title="Composition API" msg="This is Composition API sample." />
+    <HelloWorld title="Composition API" msg="This is Composition API sample." />
   </div>
 </template>
 
 <script>
-import HelloJSX from "./components/hello.jsx";
+import HelloWorld from "./components/HelloWorld.vue";
 export default {
   name: 'app',
   components: {
-    HelloJSX
+    HelloWorld
   }
 };
 </script>
