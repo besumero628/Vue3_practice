@@ -39,17 +39,39 @@ export default {
 }
 
 .transit-enter-active {
-  transition: 1.0s;
+  animation: anim 2.5s reverse;
 }
 
 .transit-leave-active {
-  transition: 1.0s;
-  opacity: 0.5;
+  animation: anim 5.0s;
 }
 
-.transit-enter, .transit-leave-to {
-  transform: rotateZ(360deg);
-  opacity: 0.1;
+@keyframes anim {
+  0% {
+    transform: translateX(0px) translateY(0px) rotateZ(0deg);
+    opacity: 1.0;
+    background-color: #ddf;
+  }
+  25% {
+    transform: translateX(250px) translateY(0px) rotateZ(0deg);
+    opacity: 1.0;
+    background-color: #fdd;
+  }
+  50% {
+    transform: translateX(0px) translateY(-100px) rotateZ(540deg);
+    opacity: 1.0;
+    background-color: #dfd;
+  }
+  75% {
+    transform: translateX(250px) translateY(-100px) rotateZ(540deg);
+    opacity: 1.0;
+    background-color: #fdf;
+  }
+  100% {
+    transform: translateX(0px) translateY(-200px) rotateZ(1080deg);
+    opacity: 1.0;
+    background-color: #ffd;
+  }
 }
 
 pre {
