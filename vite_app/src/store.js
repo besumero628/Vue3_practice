@@ -8,13 +8,22 @@ export const store = createStore({
     }
   },
   mutations: {
-    count: (state, obj) => {
-      state.message = obj.message
-      state.counter += obj.add
+    count: (state, n) => {
+      state.counter += n
+    },
+    say: (state, msg) => {
+      state.message =msg
     },
     reset: (state) => {
       state.message = "reset!"
       state.counter = 0
+    }
+  },
+  actions: {
+    doit: (context) => {
+      var n= Math.floor(Math.random() * 10)
+      context.commit('count', n)
+      context.commit('say', 'add ' + n + '!')
     }
   }
 })
