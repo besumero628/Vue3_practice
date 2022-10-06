@@ -1,29 +1,25 @@
 import { createStore } from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 export const store = createStore({
-  state() {
+  state: () => {
     return {
-      message: 'This is store data.',
+      message: 'count number',
       counter: 0,
     }
   },
   mutations: {
-    count: (state, n) => {
+    doit: (state) => {
+      var n= Math.floor(Math.random() * 10)
       state.counter += n
-    },
-    say: (state, msg) => {
-      state.message =msg
+      state.message = 'add ' + n + '.'
     },
     reset: (state) => {
-      state.message = "reset!"
-      state.counter = 0
+      state.counter = 0;
+      state.message = "reset now."
     }
   },
-  actions: {
-    doit: (context) => {
-      var n= Math.floor(Math.random() * 10)
-      context.commit('count', n)
-      context.commit('say', 'add ' + n + '!')
-    }
-  }
+  plugins: [
+    createPersistedState(),
+  ]
 })
